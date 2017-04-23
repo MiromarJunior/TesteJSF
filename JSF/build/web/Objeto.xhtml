@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:insert name="corpo"></ui:insert>
+        <h:form >
+            <p:toolbarGroup>
+                
+                <p:commandButton value="Adicionar" action="#{carroBean.adicionar()}" update="@form"></p:commandButton>
+            </p:toolbarGroup>
+        <p:fieldset legend="Objeto">
+            
+            <p:panelGrid columns="2">
+                <p:outputLabel value="MODELO" for="modelo"></p:outputLabel>
+                <p:inputText value="#{carroBean.carro.modelo}" id="modelo" ></p:inputText>
+                
+                <p:outputLabel value="FABRICANTE"></p:outputLabel>
+                <p:inputText value="#{carroBean.carro.fabricante}" required="required"></p:inputText>
+                 
+                <p:outputLabel value="COR"></p:outputLabel>
+                <p:inputText value="#{carroBean.carro.cor}" required="required"></p:inputText>
+                 
+                <p:outputLabel value="ANO"></p:outputLabel>
+                <p:inputMask mask="9999" value="#{carroBean.carro.ano}" required="required"></p:inputMask>
+                
+            </p:panelGrid>
+            
+            <p:dataTable value="#{carroBean.carros}" var="carro">
+                <p:column headerText="MODELO" sortBy="#{carro.modelo}">
+                    <h:outputText value="#{carro.modelo}"></h:outputText>
+                </p:column>
+                <p:column headerText="FABRICANTE" sortBy="#{carro.fabricante}">
+                    <h:outputText value="#{carro.fabricante}" ></h:outputText>
+                </p:column>
+                <p:column headerText="COR" sortBy="#{carro.cor}">
+                    <h:outputText value="#{carro.cor} "></h:outputText>
+                </p:column>
+                <p:column headerText="ANO" sortBy="#{carro.ano}">
+                    <h:outputText value="#{carro.ano} "></h:outputText>
+                </p:column>
+                
+                
+            </p:dataTable>
+        </p:fieldset>
+            
+            
+        </h:form>
+        
+        
+    </h:body>
+</html>
+
